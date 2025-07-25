@@ -1,12 +1,9 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 
 namespace SeleniumTestbase
 {
     public partial class Headers(IWebDriver driver)
     {
-        readonly Actions _actions = new Actions(driver);
-
         public Headers WaitToLoad()
         {
             Browser.Wait().Until(drv => GetElement(_consentFormDismiss).Displayed);
@@ -85,20 +82,7 @@ namespace SeleniumTestbase
             }
             catch (Exception)
             {
-                return null;
-            }
-        }
-
-
-        private IList<IWebElement> GetElements(By locator)
-        {
-            try
-            {
-                return driver.FindElements(locator);
-            }
-            catch (NoSuchElementException)
-            {
-                return null;
+                return null!;
             }
         }
     }
